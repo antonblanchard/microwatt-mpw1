@@ -1,23 +1,16 @@
 set script_dir [file dirname [file normalize [info script]]]
 
-set ::env(DESIGN_NAME) RAM_512x64
+set ::env(DESIGN_NAME) icache
 
 set ::env(VERILOG_FILES) "\
-	$script_dir/src/DFFRAM.v
-	$script_dir/src/DFFRAMBB.v
-	$script_dir/src/RAM_512x64.v"
+	$script_dir/../../verilog/rtl/icache.v"
 
-set ::env(CLOCK_PORT) "CLK"
-set ::env(CLOCK_PERIOD) "10"
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_PERIOD) "15"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
 
-set ::env(CLOCK_TREE_SYNTH) 0
-
-# Required because we are using standard cells
-set ::env(SYNTH_READ_BLACKBOX_LIB) 1
-
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 2900 600"
+set ::env(DIE_AREA) "0 0 680 680"
 
 # Settings for macros
 set ::env(DESIGN_IS_CORE) 0
@@ -32,16 +25,10 @@ set ::env(VDD_NETS) [list {vccd1} {vccd2} {vdda1} {vdda2}]
 set ::env(GND_NETS) [list {vssd1} {vssd2} {vssa1} {vssa2}]
 
 # Tuning
-set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 0
-set ::env(PL_TARGET_DENSITY) 0.75
-set ::env(CELL_PAD) 0
+set ::env(PL_TARGET_DENSITY) 0.56
+set ::env(CELL_PAD) 4
 
-set ::env(GLB_RT_L1_ADJUSTMENT) 0.99
-set ::env(GLB_RT_L2_ADJUSTMENT) 0.25
-set ::env(GLB_RT_L3_ADJUSTMENT) 0.25
-set ::env(GLB_RT_L4_ADJUSTMENT) 0.2
-set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
-set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
+set ::env(SYNTH_STRATEGY) "DELAY 2"
 
 set ::env(DIODE_INSERTION_STRATEGY) 3
 

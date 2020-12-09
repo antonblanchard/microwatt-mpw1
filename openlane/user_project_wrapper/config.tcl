@@ -25,13 +25,15 @@ set ::env(DESIGN_NAME) user_project_wrapper
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
 	$script_dir/../../verilog/rtl/defines.v \
+	$script_dir/../../verilog/rtl/microwatt.v \
 	$script_dir/../../verilog/rtl/user_project_wrapper.v"
 
 ## Clock configurations
-set ::env(CLOCK_PORT) "user_clock2"
-set ::env(CLOCK_NET) "mprj.clk"
+# Should we switch to independent clock?
+set ::env(CLOCK_PORT) "wb_clk_i"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
 
-set ::env(CLOCK_PERIOD) "10"
+set ::env(CLOCK_PERIOD) "20"
 
 ## Internal Macros
 ### Macro Placement
@@ -39,25 +41,48 @@ set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
-	$script_dir/../../verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+        $script_dir/../../verilog/rtl/RAM_512x64.v \
+        $script_dir/../../verilog/rtl/register_file.v \
+        $script_dir/../../verilog/rtl/multiply_4.v \
+        $script_dir/../../verilog/rtl/icache.v \
+        $script_dir/../../verilog/rtl/dcache.v"
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/user_proj_example.lef"
+        $script_dir/../../lef/RAM_512x64.lef \
+        $script_dir/../../lef/register_file.lef \
+        $script_dir/../../lef/multiply_4.lef \
+        $script_dir/../../lef/icache.lef \
+        $script_dir/../../lef/dcache.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/user_proj_example.gds"
+        $script_dir/../../gds/RAM_512x64.gds \
+        $script_dir/../../gds/register_file.gds \
+        $script_dir/../../gds/multiply_4.gds \
+        $script_dir/../../gds/icache.gds \
+        $script_dir/../../gds/dcache.gds"
 
+# Tuning
+set ::env(PL_TARGET_DENSITY) 0.19
+set ::env(CELL_PAD) 10
 
-# The following is because there are no std cells in the example wrapper project.
-set ::env(SYNTH_TOP_LEVEL) 1
-set ::env(PL_RANDOM_GLB_PLACEMENT) 1
-set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 0
-set ::env(DIODE_INSERTION_STRATEGY) 0
-set ::env(FILL_INSERTION) 0
-set ::env(TAP_DECAP_INSERTION) 0
-set ::env(CLOCK_TREE_SYNTH) 0
+set ::env(SYNTH_STRATEGY) "DELAY 2"
 
+set ::env(FP_TAPCELL_DIST) 13
+
+set ::env(GLB_RT_OBS) "met5 16.000 2826.030 2905.825 3420.000, met4 16.000 2826.030 2905.825 3420.000, met5 16.000 1740.000 694.090 2420.000, met4 16.000 1740.000 694.090 2420.000, met5 2156.110 1720.000 2904.000 2470.000, met4 2156.110 1720.000 2904.000 2470.000, met5 16.000 100.000 1014.095 1098.465, met4 16.000 100.000 1014.095 1098.465, met5 1804.210 100.000 2904.000 1192.480, met4 1804.210 100.000 2904.000 1192.480"
+
+set ::env(FP_HORIZONTAL_HALO) 20
+set ::env(FP_VERTICAL_HALO) 47.5
+
+set ::env(DIODE_INSERTION_STRATEGY) 3
+
+set ::env(PL_DIAMOND_SEARCH_HEIGHT) 400
+
+if {[catch {exec nproc} result] == 0} {
+	set ::env(ROUTING_CORES) $result
+} else {
+	set ::env(ROUTING_CORES) 4
+}
 
 # DON'T TOUCH THE FOLLOWING SECTIONS
 
