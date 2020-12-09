@@ -48,6 +48,13 @@
     `include "gl/mgmt_protect_hv.v"
 	`include "gl/gpio_control_block.v"
 	`include "gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
+
+`default_nettype wire
+	`include "gl/icache.v"
+	`include "gl/dcache.v"
+	`include "gl/register_file.v"
+	`include "gl/multiply_4.v"
+	`include "gl/RAM_512x64.v"
 	`include "gl/user_project_wrapper.v"
     `include "gl/caravel.v"
 `else
@@ -70,17 +77,18 @@
     `include "mgmt_protect_hv.v"
 	`include "gpio_control_block.v"
     `include "sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
+	`include "icache.v"
+	`include "dcache.v"
+	`include "register_file.v"
+	`include "multiply_4.v"
+	`include "RAM_512x64.v"
+	`include "microwatt.v"
 	`include "user_project_wrapper.v"
     `include "caravel.v"
 `endif
 
 `include "simple_por.v"
 `include "sram_1rw1r_32_256_8_sky130.v"
-
-/*------------------------------*/
-/* Include user project here	*/
-/*------------------------------*/
-`include "user_proj_example.v"
 
 // `ifdef USE_OPENRAM
 //     `include "sram_1rw1r_32_256_8_sky130.v"

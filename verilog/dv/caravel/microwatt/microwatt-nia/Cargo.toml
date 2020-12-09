@@ -1,0 +1,8 @@
+[package]
+name = "microwatt-nia"
+version = "0.1.0"
+authors = ["Anton Blanchard <anton@linux.ibm.com>"]
+edition = "2018"
+
+[dependencies]
+vcd = "0.6.1"
