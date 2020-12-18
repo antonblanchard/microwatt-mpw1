@@ -23,7 +23,9 @@
 
 // Type and size of soc_mem
 // `define USE_OPENRAM
+`ifndef SIM
 `define USE_CUSTOM_DFFRAM
+`endif
 // don't change the following without double checking addr widths
 `define MEM_WORDS 256
 
