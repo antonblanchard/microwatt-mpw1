@@ -16,31 +16,45 @@
 `default_nettype none
 `ifndef USE_CUSTOM_DFFRAM
 
-module DFFRAM(
+module DFFRAM #( parameter COLS=1)
+(
 `ifdef USE_POWER_PINS
-    input VPWR,
-    input VGND,
+    VPWR,
+    VGND,
 `endif
-    input CLK,
-    input [3:0] WE,
-    input EN,
-    input [31:0] Di,
-    output reg [31:0] Do,
-    input [7:0] A
+    CLK,
+    WE,
+    EN,
+    Di,
+    Do,
+    A
 );
-  
+    localparam A_WIDTH = 8+$clog2(COLS);
 
-reg [31:0] mem [0:`MEM_WORDS-1];
+`ifdef USE_POWER_PINS
+    input VPWR;
+    input VGND;
+`endif
+    input   wire            CLK;
+    input   wire    [3:0]   WE;
+    input   wire            EN;
+    input   wire    [31:0]  Di;
+    output  reg     [31:0]  Do;
+    input   wire    [(A_WIDTH - 1): 0]   A;
 
-always @(posedge CLK) begin
-    if (EN == 1'b1) begin
-        Do <= mem[A];
-        if (WE[0]) mem[A][ 7: 0] <= Di[ 7: 0];
-        if (WE[1]) mem[A][15: 8] <= Di[15: 8];
-        if (WE[2]) mem[A][23:16] <= Di[23:16];
-        if (WE[3]) mem[A][31:24] <= Di[31:24];
-    end
-end
+    reg [31:0] RAM[(256*COLS)-1 : 0];
+
+    always @(posedge CLK)
+        if(EN) begin
+            Do <= RAM[A];
+            if(WE[0]) RAM[A][ 7: 0] <= Di[7:0];
+            if(WE[1]) RAM[A][15:8] <= Di[15:8];
+            if(WE[2]) RAM[A][23:16] <= Di[23:16];
+            if(WE[3]) RAM[A][31:24] <= Di[31:24];
+        end
+        else
+            Do <= 32'b0;
+
 endmodule
 
 `else
