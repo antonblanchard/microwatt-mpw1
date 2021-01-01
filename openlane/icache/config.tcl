@@ -30,7 +30,7 @@ set ::env(CELL_PAD) 4
 
 set ::env(SYNTH_STRATEGY) "DELAY 2"
 
-set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(DIODE_INSERTION_STRATEGY) 5
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 

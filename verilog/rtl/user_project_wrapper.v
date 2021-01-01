@@ -108,7 +108,6 @@ module user_project_wrapper #(
 
    // Management engine wishbone slave is unused
    assign wbs_ack_o = 1'b0;
-   assign wbs_dat_o = {32{1'b0}};
 
    assign clk = wb_clk_i;
 

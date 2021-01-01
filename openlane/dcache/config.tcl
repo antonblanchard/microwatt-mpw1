@@ -37,7 +37,7 @@ set ::env(GLB_RT_L4_ADJUSTMENT) 0.2
 set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
 set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
 
-set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(DIODE_INSERTION_STRATEGY) 5
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
