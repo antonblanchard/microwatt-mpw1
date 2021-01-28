@@ -10,7 +10,7 @@ set ::env(CLOCK_PERIOD) "30"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 1000 1000"
+set ::env(DIE_AREA) "0 0 1100 1100"
 
 # Settings for macros
 set ::env(DESIGN_IS_CORE) 0
@@ -21,11 +21,11 @@ set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) "met5 $::env(DIE_AREA)"
 
 # Handle PDN
-set ::env(VDD_NETS) [list {vccd1} {vccd2} {vdda1} {vdda2}]
-set ::env(GND_NETS) [list {vssd1} {vssd2} {vssa1} {vssa2}]
+set ::env(VDD_NETS) [list {vccd1} ]
+set ::env(GND_NETS) [list {vssd1} ]
 
 # Tuning
-set ::env(PL_TARGET_DENSITY) 0.60
+set ::env(PL_TARGET_DENSITY) 0.55
 set ::env(CELL_PAD) 4
 
 set ::env(SYNTH_STRATEGY) "DELAY 2"

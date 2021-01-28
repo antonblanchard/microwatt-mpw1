@@ -21,8 +21,8 @@ set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) "met5 $::env(DIE_AREA)"
 
 # Handle PDN
-set ::env(VDD_NETS) [list {vccd1} {vccd2} {vdda1} {vdda2}]
-set ::env(GND_NETS) [list {vssd1} {vssd2} {vssa1} {vssa2}]
+set ::env(VDD_NETS) [list {vccd1} ]
+set ::env(GND_NETS) [list {vssd1} ]
 
 # Tuning
 set ::env(PL_TARGET_DENSITY) 0.56

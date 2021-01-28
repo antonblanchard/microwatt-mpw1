@@ -21,23 +21,21 @@ set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) "met5 $::env(DIE_AREA)"
 
 # Handle PDN
-set ::env(VDD_NETS) [list {vccd1} {vccd2} {vdda1} {vdda2}]
-set ::env(GND_NETS) [list {vssd1} {vssd2} {vssa1} {vssa2}]
+set ::env(VDD_NETS) [list {vccd1} ]
+set ::env(GND_NETS) [list {vssd1} ]
 
 # Tuning
-set ::env(PL_TARGET_DENSITY) 0.60
+set ::env(PL_TARGET_DENSITY) 0.55
 set ::env(CELL_PAD) 4
 
 set ::env(SYNTH_STRATEGY) "DELAY 2"
 
 set ::env(GLB_RT_L1_ADJUSTMENT) 0.99
-set ::env(GLB_RT_L2_ADJUSTMENT) 0.2
-set ::env(GLB_RT_L3_ADJUSTMENT) 0.2
+set ::env(GLB_RT_L2_ADJUSTMENT) 0.25
+set ::env(GLB_RT_L3_ADJUSTMENT) 0.25
 set ::env(GLB_RT_L4_ADJUSTMENT) 0.1
 set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
 set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
-
-set ::env(GLB_RT_ALLOW_CONGESTION) 1
 
 set ::env(DIODE_INSERTION_STRATEGY) 5
 
