@@ -8,7 +8,7 @@ set ::env(VERILOG_FILES) "\
 	$script_dir/src/RAM_512x64.v"
 
 set ::env(CLOCK_PORT) "CLK"
-set ::env(CLOCK_PERIOD) "10"
+set ::env(CLOCK_PERIOD) "15"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
 
 set ::env(CLOCK_TREE_SYNTH) 0
@@ -28,8 +28,8 @@ set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) "met5 $::env(DIE_AREA)"
 
 # Handle PDN
-set ::env(VDD_NETS) [list {vccd1} {vccd2} {vdda1} {vdda2}]
-set ::env(GND_NETS) [list {vssd1} {vssd2} {vssa1} {vssa2}]
+set ::env(VDD_NETS) [list {vccd1} ]
+set ::env(GND_NETS) [list {vssd1} ]
 
 # Tuning
 set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 0
@@ -43,7 +43,7 @@ set ::env(GLB_RT_L4_ADJUSTMENT) 0.2
 set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
 set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
 
-set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(DIODE_INSERTION_STRATEGY) 5
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
