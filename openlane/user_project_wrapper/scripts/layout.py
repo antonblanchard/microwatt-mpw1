@@ -34,7 +34,7 @@ dcache = get_macro_size('dcache')
 multiply_4 = get_macro_size('multiply_4')
 regfile = get_macro_size('register_file')
 
-horizontal_margin = 16
+horizontal_margin = 60
 vertical_margin   = 100
 
 # Macro layout
