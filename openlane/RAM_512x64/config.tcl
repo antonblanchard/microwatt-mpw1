@@ -17,7 +17,7 @@ set ::env(CLOCK_TREE_SYNTH) 0
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 2900 600"
+set ::env(DIE_AREA) "0 0 2800 700"
 
 # Settings for macros
 set ::env(DESIGN_IS_CORE) 0
@@ -33,15 +33,15 @@ set ::env(GND_NETS) [list {vssd1} ]
 
 # Tuning
 set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 0
-set ::env(PL_TARGET_DENSITY) 0.75
+set ::env(PL_TARGET_DENSITY) 0.70
 set ::env(CELL_PAD) 0
 
-set ::env(GLB_RT_L1_ADJUSTMENT) 0.99
-set ::env(GLB_RT_L2_ADJUSTMENT) 0.25
-set ::env(GLB_RT_L3_ADJUSTMENT) 0.25
-set ::env(GLB_RT_L4_ADJUSTMENT) 0.2
-set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
-set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
+#set ::env(GLB_RT_L1_ADJUSTMENT) 0.99
+#set ::env(GLB_RT_L2_ADJUSTMENT) 0.25
+#set ::env(GLB_RT_L3_ADJUSTMENT) 0.25
+#set ::env(GLB_RT_L4_ADJUSTMENT) 0.2
+#set ::env(GLB_RT_L5_ADJUSTMENT) 0.1
+#set ::env(GLB_RT_L6_ADJUSTMENT) 0.1
 
 set ::env(DIODE_INSERTION_STRATEGY) 5
 
