@@ -50,6 +50,7 @@
 	`include "gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
 
 `default_nettype wire
+`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_ef_sc_hd__fakediode_2.v"
 	`include "gl/icache.v"
 	`include "gl/dcache.v"
 	`include "gl/register_file.v"
